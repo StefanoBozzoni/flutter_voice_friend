@@ -280,7 +280,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           _autoToggleRecording = value;
                         });
                       },
-                      activeColor: Colors.green,
+                      activeThumbColor: Colors.green,
                       inactiveThumbColor: Colors.red,
                     ),
                     const SizedBox(height: 16),
@@ -378,7 +378,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           Config.debug = value;
                         });
                       },
-                      activeColor: Colors.green,
+                      activeThumbColor: Colors.green,
                       inactiveThumbColor: Colors.red,
                     ),
                     const SizedBox(height: 32),

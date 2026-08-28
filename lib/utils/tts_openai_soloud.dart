@@ -9,7 +9,6 @@ import 'dart:collection';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter_voice_friend/config.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:uuid/uuid.dart';
