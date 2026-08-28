@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_voice_friend/widgets/playing/playing_animation.dart';
+import 'package:isar_community/isar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_voice_friend/services/connection_service.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-import 'package:isar/isar.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 import 'package:flutter_voice_friend/activities.dart';

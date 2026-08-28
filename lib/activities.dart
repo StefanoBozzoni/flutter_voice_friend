@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_voice_friend/models/activity.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 Activity introductionActivity = Activity(
   activityId: ActivityId.introduction, // Use the enum for activityId

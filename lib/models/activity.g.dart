@@ -89,7 +89,7 @@ const ActivitySchema = CollectionSchema(
   getId: _activityGetId,
   getLinks: _activityGetLinks,
   attach: _activityAttach,
-  version: '3.1.8',
+  version: '3.3.2',
 );
 
 int _activityEstimateSize(

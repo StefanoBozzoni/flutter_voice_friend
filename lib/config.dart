@@ -27,12 +27,14 @@ class Config {
   static const String voiceShimmer = "shimmer";
 
   static const Map<String, String> languageCodeMap = {
+    'IT': 'it-IT',
     'EN': 'en-US',
     'FR': 'fr-FR',
     'ES': 'es-ES',
   };
 
   static const Map<String, String> languageStringToAdd = {
+    'IT': 'Please give your response in Italian',
     'EN': 'Please give your response in English',
     'FR': 'Please give your response in French',
     'ES': 'Please give your response in Spanish',

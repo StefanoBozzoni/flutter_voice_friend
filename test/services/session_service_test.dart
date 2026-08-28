@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_voice_friend/models/activity.dart';
 import 'package:flutter_voice_friend/models/session.dart';
 import 'package:flutter_voice_friend/services/session_service.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import 'package:mockito/mockito.dart';
 
 // Mock class for IsarCollection<Session>

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_voice_friend/models/session.dart';
 import 'package:flutter_voice_friend/models/activity.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 
 void main() {
   group('Session Model Tests', () {

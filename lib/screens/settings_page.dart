@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
 import 'package:flutter_voice_friend/activities.dart';
 import 'package:flutter_voice_friend/config.dart';
 import 'package:flutter_voice_friend/services/user_service.dart';
+import 'package:isar_community/isar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
@@ -261,7 +261,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     _buildDropdown(
                       label: 'Language',
                       currentValue: _selectedLanguage,
-                      items: ['EN', 'FR', 'ES'],
+                      items: ['IT', 'EN', 'FR', 'ES'],
                       onChanged: (String? newValue) {
                         if (newValue != null) {
                           setState(() {

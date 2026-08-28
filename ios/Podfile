@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -20,7 +20,7 @@ def flutter_root
     matches = line.match(/FLUTTER_ROOT\=(.*)/)
     return matches[1].strip if matches
   end
-  raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}. Try deleting Generated.xcconfig, then run flutter pub get"
+  raise "FLUTTER_ROOT not found in #{generated_xcode_build_settings_path}."
 end
 
 require File.expand_path(File.join('packages', 'flutter_tools', 'bin', 'podhelper'), flutter_root)
@@ -40,11 +40,39 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
-      target.build_configurations.each do |config|
-        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
-          '$(inherited)',
-        'PERMISSION_MICROPHONE=1',
-      ]
+    
+    target.build_configurations.each do |config|
+      # 1. Rimuove il flag -G che causa errori su iOS Simulator (Clang su M3)
+      config.build_settings.each do |key, value|
+        if value.is_a?(String)
+          if value.include?("-G")
+            config.build_settings[key] = value.gsub(/\b-G\S*\b/, "").strip
+          end
+        elsif value.is_a?(Array)
+          config.build_settings[key].delete_if { |arg| arg.is_a?(String) && arg.start_with?("-G") }
+        end
+      end
+
+      # 2. Silenzia i warning per flutter_soloud (misleading indentation)
+      if target.name.include?('flutter_soloud')
+        config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = 'YES'
+      end
+
+      # 3. Ottimizzazione per Apple Silicon (M3)
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'i386'
+      
+      # 4. Deployment target e permessi
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'PERMISSION_MICROPHONE=1']
+    end
+  end
+
+  # Pulizia manuale dei file .xcconfig generati da CocoaPods
+  Dir.glob("Pods/Target Support Files/**/*.xcconfig").each do |file|
+    content = File.read(file)
+    if content.include?("-G")
+      new_content = content.gsub(/\b-G\S*\b/, "")
+      File.open(file, "w") { |f| f.puts new_content }
     end
   end
 end

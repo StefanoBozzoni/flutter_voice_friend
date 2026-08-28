@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:isar_community/isar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_voice_friend/config.dart';
 import 'package:flutter_voice_friend/screens/main_screen.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_voice_friend/services/animation_controller_service.dart'
 import 'package:flutter_voice_friend/services/connection_service.dart';
 import 'package:flutter_voice_friend/services/session_service.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:isar/isar.dart';
 
 import 'package:flutter_voice_friend/activities.dart';
 import 'package:flutter_voice_friend/models/activity.dart';

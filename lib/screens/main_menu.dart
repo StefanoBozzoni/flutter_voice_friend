@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
+import 'package:isar_community/isar.dart';
 import '../models/activity.dart';
 import '../widgets/activity/activity_item.dart';
 

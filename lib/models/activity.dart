@@ -1,4 +1,6 @@
-import 'package:isar/isar.dart';
+
+import 'package:isar_community/isar.dart';
+
 import 'session.dart';
 
 part 'activity.g.dart'; // Required for Isar code generation
