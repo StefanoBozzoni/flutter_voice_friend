@@ -63,7 +63,7 @@ class TextToSpeechOpenAI implements tts_interface.TextToSpeechOpenAI {
     http.Client? httpClient,
   })  : _audioPlayer = audioPlayer ?? AudioPlayer(),
         _httpClient = httpClient ?? http.Client() {
-    _audioPlayer.setVolume(1.0);
+    _audioPlayer.setVolume(4.0);
     _audioPlayer.setLoopMode(LoopMode.off);
     _audioPlayer.setSpeed(_voiceSpeed);
   }

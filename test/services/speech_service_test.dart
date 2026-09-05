@@ -23,6 +23,7 @@ void main() {
       //mockSpeechToText = MockSpeechToText();
 
       Config.deepgramApiKey = dotenv.env['DEEPGRAM_API_KEY'] ?? '';
+      Config.googleApiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
     });
 
     test('Should initialize Deepgram successfully', () async {

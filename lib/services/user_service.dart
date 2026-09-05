@@ -2,9 +2,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/activity.dart';
-import '../activities.dart';
-import '../config.dart';
+import 'package:flutter_voice_friend/models/activity.dart';
+import 'package:flutter_voice_friend/activities.dart';
+import 'package:flutter_voice_friend/config.dart';
 
 class UserService extends ChangeNotifier {
   String selectedLanguage = Config.defaultLanguage;

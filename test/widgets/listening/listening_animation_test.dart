@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_voice_friend/widgets/listening/listening_animation.dart';
-import 'package:flutter_voice_friend/utils/audio_utils.dart';
 import 'package:lottie/lottie.dart';
 
 void main() {
@@ -55,7 +54,7 @@ void main() {
     // Note: Directly accessing _currentScale is not possible since it's private.
     // Instead, verify the Transform widget's scale.
     final transformFinderUpdated = find.byType(Transform);
-    final Transform transform = tester.widget(transformFinderUpdated.first);
+    //final Transform transform = tester.widget(transformFinderUpdated.first);
     //TODO Fix test
     //expect(transform.transform.getMaxScaleOnAxis(),
     //    closeTo(AudioUtils.getScale(0.8, 1.0, 0.75, 3.0), 0.01));

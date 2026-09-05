@@ -3,17 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:langchain/langchain.dart';
 import 'package:langchain_openai/langchain_openai.dart';
+import 'package:langchain_google/langchain_google.dart';
 import 'package:flutter_voice_friend/config.dart';
 import 'package:flutter_voice_friend/llm_templates/summarizers/example_summarizer_user_template.dart';
 import 'package:flutter_voice_friend/llm_templates/summarizers/example_summarizer_session.dart';
 
 class LLMChainLibrary {
+  // Toggle provider: false = OpenAI (default), true = Gemini.
+  static const bool useGeminiModel = false;
+
   late ConversationBufferWindowMemory memory;
   late PromptTemplate promptTemplate;
   late PromptTemplate memoryUserSummaryTemplate;
   late PromptTemplate memorySessionSummaryTemplate;
   late PromptTemplate memoryAllSessionSummaryTemplate;
-  late ChatOpenAI llm;
+  late BaseChatModel llm;
   late ConversationChain llmChain;
   String template;
 
@@ -25,7 +29,7 @@ class LLMChainLibrary {
     PromptTemplate? memoryUserSummaryTemplate,
     PromptTemplate? memorySessionSummaryTemplate,
     PromptTemplate? memoryAllSessionSummaryTemplate,
-    ChatOpenAI? llm,
+    BaseChatModel? llm,
     ConversationChain? llmChain,
   }) {
     _initializeComponents(
@@ -45,7 +49,7 @@ class LLMChainLibrary {
     PromptTemplate? promptTemplate,
     PromptTemplate? memoryUserSummaryTemplate,
     PromptTemplate? memorySessionSummaryTemplate,
-    ChatOpenAI? llm,
+    BaseChatModel? llm,
     ConversationChain? llmChain,
   }) {
     this.memory = memory ??
@@ -61,17 +65,29 @@ class LLMChainLibrary {
         PromptTemplate.fromTemplate(templateSummaryUser);
     this.memorySessionSummaryTemplate = memorySessionSummaryTemplate ??
         PromptTemplate.fromTemplate(templateSummarySession);
-    this.llm = llm ??
-        ChatOpenAI(
-          apiKey: Config.openaiApiKey,
-          defaultOptions: const ChatOpenAIOptions(model: 'gpt-4o-mini'),
-        );
+    this.llm = llm ?? _buildDefaultLlm();
     this.llmChain = llmChain ??
         ConversationChain(
           llm: this.llm,
           memory: this.memory,
           prompt: this.promptTemplate,
         );
+  }
+
+  BaseChatModel _buildDefaultLlm() {
+    if (useGeminiModel) {
+      return ChatGoogleGenerativeAI(
+        apiKey: Config.googleApiKey,
+        defaultOptions: const ChatGoogleGenerativeAIOptions(
+          model: 'gemini-1.5-pro',
+        ),
+      );
+    }
+
+    return ChatOpenAI(
+      apiKey: Config.openaiApiKey,
+      defaultOptions: const ChatOpenAIOptions(model: 'gpt-4-turbo'),
+    );
   }
 
   void setTemplate(String newTemplate) {

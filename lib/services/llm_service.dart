@@ -5,11 +5,11 @@ import 'package:flutter_voice_friend/services/session_service.dart';
 import 'package:flutter_voice_friend/utils/llm_chain.dart';
 import 'package:flutter_voice_friend/utils/text_utils.dart';
 
-import '../config.dart';
-import '../llm_templates/all_templates.dart';
+import 'package:flutter_voice_friend/config.dart';
+import 'package:flutter_voice_friend/llm_templates/all_templates.dart';
 import 'user_service.dart';
 import 'audio_service.dart';
-import '../models/activity.dart';
+import 'package:flutter_voice_friend/models/activity.dart';
 
 class LLMService {
   String template = templateIntroduction;
@@ -59,6 +59,10 @@ class LLMService {
       case ActivityId.dreamAnalyst:
         llmChain.setTemplate(templateDreamAnalyst);
         break;
+      case ActivityId.conversational:
+        llmChain.setTemplate(templateConversational);
+        break;
+
       default:
         // Handle default case if needed
         break;

@@ -9,7 +9,7 @@ enum ActivityCategory {
   dreamActivities,
 }
 
-enum ActivityId { introduction, dreamAnalyst }
+enum ActivityId { introduction, dreamAnalyst, conversational }
 
 @Collection()
 class Activity {

@@ -74,7 +74,7 @@ class TextToSpeechOpenAI implements tts_interface.TextToSpeechOpenAI {
       await soloud.init();
     }
     soloud.setVisualizationEnabled(true);
-    soloud.setGlobalVolume(1);
+    soloud.setGlobalVolume(4);
     soloud.setMaxActiveVoiceCount(32);
     
     // In version 4.x, we must instantiate AudioData to get samples
@@ -119,7 +119,7 @@ class TextToSpeechOpenAI implements tts_interface.TextToSpeechOpenAI {
 
   @override
   void setVoiceSpeed(double voiceSpeed) {
-    _voiceSpeed = voiceSpeed;
+    _voiceSpeed = voiceSpeed.clamp(0.95, 1.05);
   }
 
   void _startAudioDataFetch() {
@@ -381,10 +381,13 @@ class TextToSpeechOpenAI implements tts_interface.TextToSpeechOpenAI {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        "model": "tts-1",
+        "model": "gpt-4o-mini-tts",
         "input": text,
         "voice": _voice,
-        "response_format": "wav"
+        "response_format": "wav",
+        "speed": 1.1,
+        "instructions":
+        "Parla in italiano naturale (it-IT), con pronuncia corretta delle parole italiane, usa un tono amichevole,  ritmo leggermente più rapido del normale, e punteggiatura rispettata. Non usare accento inglese."
       }),
     );
 

@@ -1,11 +1,11 @@
 // File: lib/widgets/app_bar_widget.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_voice_friend/models/activity.dart';
+import 'package:flutter_voice_friend/screens/main_menu.dart';
+import 'package:flutter_voice_friend/screens/settings_page.dart';
 import 'package:flutter_voice_friend/services/user_service.dart';
 import 'package:isar_community/isar.dart';
 
-import '../models/activity.dart';
-import '../screens/main_menu.dart';
-import '../screens/settings_page.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final Activity currentActivity;

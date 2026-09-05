@@ -6,6 +6,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:isar_community/isar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_voice_friend/config.dart';
+import 'package:flutter_voice_friend/utils/llm_chain.dart';
 import 'package:flutter_voice_friend/screens/main_screen.dart';
 import 'package:flutter_voice_friend/services/animation_controller_service.dart';
 import 'package:flutter_voice_friend/services/connection_service.dart';
@@ -34,10 +35,25 @@ Future<void> main() async {
   final docsDir = await getApplicationDocumentsDirectory();
 
   Config.openaiApiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
+  Config.googleApiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
   Config.deepgramApiKey = dotenv.env['DEEPGRAM_API_KEY'] ?? '';
 
-  if (Config.openaiApiKey.isEmpty || Config.deepgramApiKey.isEmpty) {
-    throw Exception('API keys are missing in the .env file');
+  if (Config.deepgramApiKey.isEmpty) {
+    throw Exception('DEEPGRAM_API_KEY is missing in the .env file');
+  }
+
+  if (LLMChainLibrary.useGeminiModel) {
+    if (Config.googleApiKey.isEmpty || Config.openaiApiKey.isEmpty) {
+      throw Exception(
+        'GOOGLE_API_KEY e OPEN_API_KEY are required when Gemini is enabled (useGeminiModel=true)',
+      );
+    }
+  } else {
+    if (Config.openaiApiKey.isEmpty) {
+      throw Exception(
+        'OPENAI_API_KEY is required when Gemini is disabled (useGeminiModel=false)',
+      );
+    }
   }
 
   isar = await Isar.open([ActivitySchema, SessionSchema],

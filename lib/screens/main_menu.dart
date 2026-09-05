@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_voice_friend/models/activity.dart';
+import 'package:flutter_voice_friend/widgets/activity/activity_item.dart';
 import 'package:isar_community/isar.dart';
-import '../models/activity.dart';
-import '../widgets/activity/activity_item.dart';
 
 class MainMenu extends StatelessWidget {
   final int currentLevel;

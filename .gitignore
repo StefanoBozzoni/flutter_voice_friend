@@ -46,3 +46,6 @@ app.*.map.json
 /android/app/release
 
 /assets/screenshots/*
+
+# FVM Version Cache
+.fvm/

@@ -3,13 +3,14 @@ import 'dart:io' show Platform;
 
 class Config {
   static late String openaiApiKey;
+  static late String googleApiKey;
   static late String deepgramApiKey;
 
   static bool debug = false;
 
   static const String openaiTtsUrl = 'https://api.openai.com/v1/audio/speech';
 
-  static const String defaultLanguage = 'EN';
+  static const String defaultLanguage = 'IT';
   static final String defaultStt = Platform.isIOS ? onDeviceStt : deepgramStt;
   static const String defaultVoice = voiceNova;
 
@@ -25,6 +26,8 @@ class Config {
   static const String voiceOnyx = "onyx";
   static const String voiceNova = "nova";
   static const String voiceShimmer = "shimmer";
+  static const String voiceMarin = "marin";
+  static const String voiceCedar = "cedar";
 
   static const Map<String, String> languageCodeMap = {
     'IT': 'it-IT',

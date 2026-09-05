@@ -52,7 +52,7 @@ class ActivityItem extends StatelessWidget {
             child: ColorFiltered(
               colorFilter: isCompleted
                   ? ColorFilter.mode(
-                      Colors.white.withOpacity(0.5), BlendMode.screen)
+                      Colors.white.withValues(alpha : 0.5), BlendMode.screen)
                   : const ColorFilter.mode(
                       Colors.transparent, BlendMode.multiply),
               child: Image.asset(

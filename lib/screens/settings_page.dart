@@ -319,7 +319,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         Config.voiceFable,
                         Config.voiceOnyx,
                         Config.voiceNova,
-                        Config.voiceShimmer
+                        Config.voiceShimmer,
+                        Config.voiceMarin,
+                        Config.voiceCedar
                       ],
                       onChanged: (String? newValue) {
                         if (newValue != null) {

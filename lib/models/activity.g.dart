@@ -185,10 +185,12 @@ P _activityDeserializeProp<P>(
 const _ActivityactivityIdEnumValueMap = {
   'introduction': 0,
   'dreamAnalyst': 1,
+  'conversational': 2,
 };
 const _ActivityactivityIdValueEnumMap = {
   0: ActivityId.introduction,
   1: ActivityId.dreamAnalyst,
+  2: ActivityId.conversational,
 };
 const _ActivitycategoryEnumValueMap = {
   'dreamActivities': 0,

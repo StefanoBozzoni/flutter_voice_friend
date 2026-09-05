@@ -31,6 +31,7 @@ void main() {
       mockHttpClient = MockClient();
 
       Config.openaiApiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
+      Config.googleApiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
 
       // Initialize TTS with a mock voice and replace dependencies
       tts = TextToSpeechOpenAI(

@@ -37,6 +37,7 @@ void main() {
     );
 
     Config.openaiApiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
+    Config.googleApiKey = dotenv.env['GOOGLE_API_KEY'] ?? '';
 
     mockLLM = MockChatOpenAI();
     mockChain = MockConversationChain();

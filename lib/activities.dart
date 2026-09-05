@@ -91,5 +91,16 @@ List<Activity> initializeActivities() {
       duration: 10,
       imagePath: 'assets/activities/example_image_1.webp',
     ),
+    Activity(
+      activityId: ActivityId.conversational,
+      name: 'Conversational',
+      description: 'Free conversation',
+      requiredLevel: 0,
+      displayOrder: 2,
+      category: ActivityCategory.dreamActivities,
+      duration: 10,
+      imagePath: 'assets/activities/example_image_3.webp',
+    ),
   ];
+
 }

@@ -8,7 +8,7 @@ class SessionService {
 
   SessionService({required this.isar});
 
-  Future<void> updateActivity(Activity activity) async {
+  Future<void> markActivityCompleted(Activity activity) async {
     final Activity? currentActivityFromDb = await isar.activitys
         .filter()
         .activityIdEqualTo(activity.activityId)

@@ -1,5 +1,3 @@
-// lib/screens/main_screen.dart
-
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -490,7 +488,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       await showIntroductionActivityCompletionDialog(context);
 
       if (userService.level == userService.currentActivity.requiredLevel) {
-        await sessionService.updateActivity(userService.currentActivity);
+        await sessionService.markActivityCompleted(userService.currentActivity);
         userService.level++;
       }
 
@@ -512,7 +510,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
         await sessionService.saveSession(conversationLog, sessionSummary,
             sessionStartTime, userService.currentActivity);
       } else {
-        await sessionService.updateActivity(userService.currentActivity);
+        await sessionService.markActivityCompleted(userService.currentActivity);
       }
 
       if (userService.level == userService.currentActivity.requiredLevel) {
